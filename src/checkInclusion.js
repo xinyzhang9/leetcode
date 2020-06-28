@@ -23,21 +23,20 @@
 两个字符串的长度都在 [1, 10,000] 之间
  */
 export const checkInclusion = function(s1, s2) {
+    const baseCode = 'a'.charCodeAt();
     if(s1.length > s2.length) return false;
     const s1map = new Array(26).fill(0);
+    const s2map = new Array(26).fill(0);
     for(let i = 0; i < s1.length; i++) {
-        s1map[s1.charAt(i).charCodeAt()-'a'.charCodeAt()]++;
+        s1map[s1.charAt(i).charCodeAt()-baseCode]++;
+        s2map[s2.charAt(i).charCodeAt()-baseCode]++;
     }
-    console.log(s1map)
-    for(let i = 0; i <= s2.length - s1.length; i++) {
-        const s2map = new Array(26).fill(0);
-        for(let j = 0; j < s1.length; j++) {
-            s2map[s2.charAt(i+j).charCodeAt()-'a'.charCodeAt()]++;
-        }
+    for(let i = 0; i < s2.length - s1.length; i++) {
         if(matches(s1map, s2map)) return true;
+        s2map[s2.charAt(i+s1.length).charCodeAt()-baseCode]++;
+        s2map[s2.charAt(i).charCodeAt()-baseCode]--;
     }
-    return false;
-    
+    return matches(s1map, s2map);
 };
 
 function matches(arr1, arr2) {
