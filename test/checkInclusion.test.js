@@ -1,5 +1,5 @@
-import { expect } from 'chai';
 import { checkInclusion } from '../src/checkInclusion';
+import { expect } from 'chai';
 
 describe('checkInclusion', () => {
     it('false', () => {
