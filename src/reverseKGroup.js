@@ -44,3 +44,22 @@ var reverseList = function(head, tail) {
     }
     return [tail, head];
 }
+
+export const reverseKGroupRecursion = function(head, k) {
+    if(!head) return null;
+    let cur = head, prev = null;
+    for(let i = 0; i < k-1; i++) {
+        cur = cur.next;
+        if(!cur) break;
+    }
+    if(!cur) return head;
+    cur = head;
+    for(let i = 0; i < k; i++) {
+        let tmp = cur.next;
+        cur.next = prev;
+        prev = cur;
+        cur = tmp;
+    }
+    head.next = reverseKGroupRecursion(cur, k);
+    return prev;
+}
