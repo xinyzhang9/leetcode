@@ -19,6 +19,7 @@ export function makeList(arr) {
          curr.next = new ListNode(arr[i]);
          curr = curr.next;
     }
+    curr.next = null;
     return dummy.next;
 }
 
