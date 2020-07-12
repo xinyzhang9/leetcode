@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { nextPermutation } from '../src/nextPerm'
-
+import { isArrayEqual } from '../utils/arrayUtils'
 describe('next permutation', () => {
     it('[1,2,3]', () => {
         let nums = [1,2,3]
@@ -14,11 +14,3 @@ describe('next permutation', () => {
         expect(isArrayEqual(nums, [1,1])).to.be.true
     })
 })
-
-function isArrayEqual(a, b) {
-    if(a.length !== b.length) return false
-    for(let i = 0; i < a.length; i++) {
-        if(a[i] !== b[i]) return false
-    }
-    return true
-}
