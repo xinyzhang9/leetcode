@@ -1,4 +1,4 @@
-import { checkInclusion, canFinish } from '../src/canFinish';
+import { canFinish } from '../src/canFinish';
 import { expect } from 'chai';
 
 describe('can finish', () => {
